@@ -1,0 +1,161 @@
+:root{
+  --main-orange:#FF5C00;
+  --dark-grey:#1f1f1f;
+  --panel-bg: rgba(255,255,255,0.92);
+  --muted-gray: rgba(0,0,0,0.6);
+}
+*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;}
+html,body,#app{height:100%;margin:0;padding:0;color:white}
+.app{min-height:100vh;display:flex;flex-direction:column;position:relative;padding-bottom:70px}
+.page{display:none;padding:10px}
+.page.active{display:block}
+.center-card{max-width:420px;margin:60px auto 20px;padding:20px;text-align:center}
+.welcome{margin:0;font-size:12px;letter-spacing:2px;color:#fff}
+.title{margin:8px 0 20px;font-size:26px;color:var(--main-orange)}
+body {
+  background-image: url("images/13.jpg");
+  background-size: cover;
+}
+
+.buttons-col{display:flex;flex-direction:column;gap:12px;padding:8px}
+.btn{padding:12px 16px;border-radius:12px;border:0;font-weight:600;font-size:16px;cursor:pointer;transition:all .15s ease}
+.white-btn{background:white;opacity:0.8;color:var(--main-orange)}
+.white-btn:active{transform:scale(.99)}
+.white-btn.tap-flash{background:var(--main-orange);color:white}
+.orange-btn{background:var(--main-orange);color:white}
+.orange-btn.tap-flash{background:white;color:var(--main-orange)}
+
+.footer{position:fixed;left:0;right:0;bottom:0;height:64px;display:flex;align-items:center;justify-content:center;background:transparent}
+.nav{display:flex;gap:20px;background:transparent;padding:8px;border-radius:12px}
+.nav-btn{width:56px;height:56px;border-radius:12px;border:0;background:transparent;color:white;font-size:20px}
+.nav-btn.active{color:var(--main-orange)}
+
+.page-header{padding:12px;text-align:center}
+.content{padding:8px;max-width:720px;margin:0 auto}
+
+.build-card{background:var(--panel-bg);border-radius:14px;color:#000;padding:12px;max-width:420px;margin:250px auto;overflow:visible;transition:height .25s ease,all .25s ease}
+.card-header{margin:0 0 8px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,0.06)}
+
+.form-group{display:flex;flex-direction:column;gap:8px}
+.dropdown{position:relative}
+.dropdown-btn{width:100%;padding:10px;border-radius:10px;border:0;background:rgba(0,0,0,0.08);text-align:left}
+/*.dropdown-panel{position:absolute;left:0;right:0;top:110%;background:rgba(0,0,0,0.08);border-radius:10px;padding:8px;display:none;z-index:20;max-height:240px;overflow:auto}*/
+.dropdown-panel {
+  position: static;
+  display: none;
+  background: rgba(0,0,0,0.08);
+  border-radius: 10px;
+  padding: 8px;
+  max-height: 240px;
+  overflow: auto;
+  margin-top: 6px;
+  transition: all 0.25s ease;
+}
+
+.dropdown.open .dropdown-panel {
+  display: block;
+}
+
+.dropdown-btn i {
+  transition: transform 0.25s ease;
+}
+
+.dropdown.open .dropdown-btn i {
+  transform: rotate(180deg); /* rotates arrow up */
+}
+
+.buttons-col{
+  margin-top:250px;
+}
+
+.edit-workout.icon-btn, .delete-workout.icon-btn {
+  color:white;
+}
+
+.workout-header.drag-handle{
+  color: white;
+}
+
+.muscles-list {
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  padding: 0 8px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.day-toggle.open .muscles-list {
+  max-height: 500px; /* enough to fit content */
+  margin-top: 6px;
+  padding: 8px;
+}
+
+/*bunu elave etdim day toggle rahat achilsin deye*/
+/* Smooth accordion animation for Day toggles */
+.day-toggle .workouts-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease-out, opacity 0.25s ease-out;
+  opacity: 0;
+}
+
+/* When the Day toggle is open */
+.day-toggle.open .workouts-list {
+  max-height: 1000px; /* large enough to fit content */
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+.day-option{padding:8px;border-radius:8px;margin:4px 0;cursor:pointer}
+.day-option:hover,.day-option.active{background:var(--main-orange);color:white}
+
+.checkbox-row{display:flex;align-items:center;gap:8px;padding:6px 0}
+.checkbox-row input[type='checkbox']{width:18px;height:18px;accent-color:initial;border-radius:3px}
+.checkbox-row input[type='checkbox']:checked{accent-color:var(--main-orange)}
+
+.icon-btn{background:transparent;border:0;padding:8px;font-size:16px;cursor:pointer;color:var(--main-orange)}
+
+.day-toggle{background:white;border-radius:10px;margin-bottom:8px;overflow:hidden}
+.day-toggle-header{display:flex;align-items:center;gap:8px;padding:10px;background:white;color:var(--main-orange);justify-content:space-between}
+.day-toggle-header .drag-handle{margin-right:8px;color:var(--main-orange)}
+.day-title{flex:1;text-align:left;font-weight:700}
+
+.workouts-list{background:transparent;padding:8px}
+
+.workout-toggle{border-radius:8px;margin-bottom:8px;overflow:hidden;background:var(--main-orange);color:white}
+.workout-header{display:flex;align-items:center;gap:8px;padding:10px;background:var(--main-orange);color:white;justify-content:space-between}
+.workout-header .drag-handle{margin-right:8px;color:white}
+.workout-title{flex:1;text-align:left;font-weight:700}
+
+.workout-editor{padding:10px;background:rgba(255,255,255,0.8);display:none;flex-direction:column;gap:8px}
+.workout-editor input[type='text'],.workout-editor input[type='number']{padding:8px;border-radius:8px;border:0;background:rgba(255,255,255,0.8);color:var(--dark-grey);outline:none}
+.workout-editor input[type='number']{width: 33.33%;}
+.small-inputs{display:flex;gap:8px}
+.editor-actions{display:flex;justify-content:flex-end}
+.done-btn{padding:8px 12px;border-radius:8px;border:0;background:var(--main-orange);color:white}
+
+.exercises-list{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.exercise-row{display:flex;align-items:center;gap:8px;padding:8px;background:rgba(0,0,0,0.06);border-radius:8px;color:var(--dark-grey)}
+.exercise-row .drag-handle{color:var(--dark-grey);margin-right:8px}
+.exercise-name{flex:1;text-align:left;font-weight:600}
+.exercise-detail{white-space:nowrap;margin-left:6px}
+
+.saved-card{background:var(--panel-bg);border-radius:14px;padding:12px;max-width:420px;margin:12px auto;color:#000}
+.saved-header{display:flex;align-items:center;justify-content:space-between}
+.saved-list .day-toggle{background:white}
+
+.icon-btn.delete{color:red}
+
+/* small screens adjustments */
+@media (max-width:520px){
+  .center-card{margin-top:40px;padding:18px}
+  .nav-btn{width:56px;height:56px}
+}
