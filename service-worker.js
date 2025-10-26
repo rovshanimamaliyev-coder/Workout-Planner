@@ -1,22 +1,3 @@
-/*const CACHE_NAME = 'workout-planner-v1';
-const CACHE_URLS = ['/', 'index.html', 'style.css', 'script.js', 'manifest.json','./images/13.jpg','./images/192.jpg','./images/512.jpg'];
-
-self.addEventListener('install', evt=>{
-  evt.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(CACHE_URLS)));
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', evt=>{
-  evt.waitUntil(self.clients.claim());
-});
-
-self.addEventListener('fetch', evt=>{
-  if(evt.request.method !== 'GET') return;
-  evt.respondWith(caches.match(evt.request).then(r=>r || fetch(evt.request).then(resp=>{
-    return caches.open(CACHE_NAME).then(cache=>{ cache.put(evt.request, resp.clone()); return resp; });
-  })));
-});*/
-
 const CACHE_NAME = 'workout-planner-v1';
 const CACHE_URLS = [
   '/',
@@ -35,7 +16,12 @@ const CACHE_URLS = [
 // Install event: Cache all necessary files
 self.addEventListener('install', evt => {
   evt.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(CACHE_URLS))
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll(CACHE_URLS).catch(err => {
+        console.error('Caching failed:', err);
+        // You can log the individual URL that failed here if needed
+      });
+    })
   );
   self.skipWaiting(); // Skip waiting and activate immediately
 });
@@ -65,14 +51,18 @@ self.addEventListener('fetch', evt => {
     caches.match(evt.request)
       .then(r => r || fetch(evt.request)
         .then(resp => {
-          return caches.open(CACHE_NAME).then(cache => {
-            cache.put(evt.request, resp.clone());
-            return resp;
-          });
+          // Check if the request was successful
+          if (resp && resp.status === 200) {
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(evt.request, resp.clone());
+            });
+          }
+          return resp;
         })
-        .catch(() => {
+        .catch(err => {
           // Fallback for offline use
-          return caches.match('/offline.html'); // Make sure you have an offline page in the cache
+          console.error('Network request failed:', err);
+          return caches.match('/offline.html'); // Ensure you have an offline.html file in your cache
         })
       )
   );
