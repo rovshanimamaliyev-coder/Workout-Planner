@@ -1,15 +1,19 @@
 {
   "name": "Workout Planner",
+  "id": "/workout-planner/",
   "short_name": "WorkoutPlanner",
-  "start_url": "./index.html",
+  "start_url": ".",
   "scope": "/",
   "display": "standalone",
   "background_color": "#1f1f1f",
   "theme_color": "#FF5C00",
   "orientation": "portrait-primary",
   "icons": [
+    { "src": "images/144.png", "sizes":"144x144", "type":"image/png" },
     { "src": "images/192.jpg", "sizes":"192x192", "type":"image/jpg" },
     { "src": "images/512.jpg", "sizes":"512x512", "type":"image/jpg" },
-    { "src": "images/13.jpg", "sizes":"626x939", "type":"image/jpg" }
+    { "src": "images/13.jpg", "sizes":"626x939", "type":"image/jpg" },
+    { "src": "images/screenshot-wide.png", "sizes":"1200x800", "type":"image/png", "form_factor": "wide" },
+    { "src": "images/screenshot-mobile.png", "sizes":"720x1280", "type":"image/png"}
   ]
 }
