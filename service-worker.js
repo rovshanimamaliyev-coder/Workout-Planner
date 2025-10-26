@@ -25,8 +25,11 @@ const CACHE_URLS = [
   '/script.js',
   '/manifest.json',
   '/images/13.jpg',
+  '/images/144.jpg',
   '/images/192.jpg',
-  '/images/512.jpg'
+  '/images/512.jpg',
+  '/images/screenshot-mobile.png',
+  '/images/screenshot-wide.png'
 ];
 
 // Install event: Cache all necessary files
