@@ -189,7 +189,27 @@ addBtn.addEventListener('click', ()=>{
   // header actions
   const saveBtn = dayEl.querySelector('.save-day');
   const deleteBtn = dayEl.querySelector('.delete-day');
-  saveBtn.addEventListener('click', ()=>saveDayPlan(dayEl));
+  //saveBtn.addEventListener('click', ()=>saveDayPlan(dayEl));
+  //ashagidaki saveBtn yeni elave edilib
+  saveBtn.addEventListener('click', () => {
+    saveDayPlan(dayEl); // Save the day plan
+    // Store the page state in localStorage before reload
+    localStorage.setItem('openPage', 'page-builder');
+    location.reload();  // Reload the page to reset the dropdowns
+  });
+  // After page reload, open the correct page based on stored state
+  window.addEventListener('load', () => {
+  const openPage = localStorage.getItem('openPage');
+  if (openPage) {
+    // Ensure the DOM is fully loaded before calling showPage
+    document.addEventListener('DOMContentLoaded', () => {
+      showPage(openPage);  // Open the Build page
+    });
+    localStorage.removeItem('openPage');  // Clear the stored page state
+  }
+  });
+
+
   deleteBtn.addEventListener('click', ()=>{
     if(confirm('Delete this day and its content?')){ dayEl.remove(); }
   });
