@@ -1,9 +1,9 @@
 {
   "name": "Workout Planner",
-  "id": "/workout-planner/",
+  "id": "./",
   "short_name": "WorkoutPlanner",
-  "start_url": ".",
-  "scope": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#1f1f1f",
   "theme_color": "#FF5C00",
