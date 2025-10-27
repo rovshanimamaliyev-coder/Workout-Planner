@@ -495,9 +495,19 @@ $('#btn-download').addEventListener('click', async ()=>{
 });
 
 // register service worker
-if('serviceWorker' in navigator){
+/*if('serviceWorker' in navigator){
   window.addEventListener('load', ()=>{
     navigator.serviceWorker.register('service-worker.js').catch(()=>console.warn('SW registration failed'));
   });
+}*/
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('./service-worker.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch(err => console.warn('SW registration failed', err));
+  });
 }
+
 
