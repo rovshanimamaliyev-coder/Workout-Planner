@@ -14,7 +14,7 @@ html,body,#app{height:100%;margin:0;padding:0;color:white}
 .title{margin:8px 0 20px;font-size:26px;color:var(--main-orange)}
 body {
   background-image: url("images/13.jpg");
-  background-size: cover;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
 }
