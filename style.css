@@ -14,9 +14,13 @@ html,body,#app{height:100%;margin:0;padding:0;color:white}
 .title{margin:8px 0 20px;font-size:26px;color:var(--main-orange)}
 body {
   background-image: url("images/13.jpg");
-  background-size: auto;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .buttons-col{display:flex;flex-direction:column;gap:12px;padding:8px}
